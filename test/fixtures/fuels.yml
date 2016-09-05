@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fuelstation_id: 
+  fueltype_id: 
+  description: MyString
+
+two:
+  fuelstation_id: 
+  fueltype_id: 
+  description: MyString
