@@ -1,2 +1,3 @@
 class FueltypesController < ApplicationController
+
 end
