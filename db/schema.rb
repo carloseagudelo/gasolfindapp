@@ -64,7 +64,9 @@ ActiveRecord::Schema.define(version: 20160905033627) do
     t.string   "description", limit: 255
     t.string   "link",        limit: 255
     t.string   "horary",      limit: 255
-    t.string   "responsable", limit: 255
+    t.string   "adress",      limit: 255
+    t.float    "latitude",    limit: 24
+    t.float    "longitude",   limit: 24
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
@@ -124,8 +126,6 @@ ActiveRecord::Schema.define(version: 20160905033627) do
     t.string   "Age",                    limit: 255
     t.integer  "city_id",                limit: 4
     t.string   "Adress",                 limit: 255
-    t.float    "latitude",               limit: 24
-    t.float    "longitude",              limit: 24
     t.string   "description",            limit: 255
     t.integer  "vehicle_id",             limit: 4
   end

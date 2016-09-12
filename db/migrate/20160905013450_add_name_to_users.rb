@@ -5,8 +5,6 @@ class AddNameToUsers < ActiveRecord::Migration
     add_column :users, :Age, :string
     add_reference :users, :city, index: true, foreign_key: true
     add_column :users, :Adress, :string
-    add_column :users, :latitude, :float
-    add_column :users, :longitude, :float
     add_column :users, :description, :string
     add_reference :users, :vehicle, index: true, foreign_key: true
   end

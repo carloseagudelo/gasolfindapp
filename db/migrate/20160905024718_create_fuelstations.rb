@@ -6,7 +6,9 @@ class CreateFuelstations < ActiveRecord::Migration
       t.string :description
       t.string :link
       t.string :horary
-      t.string :responsable
+      t.string :adress
+      t.float  :latitude
+      t.float  :longitude
 
       t.timestamps null: false
     end
