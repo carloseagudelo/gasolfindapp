@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20160905033627) do
 
   create_table "cities", force: :cascade do |t|
     t.integer  "country_id", limit: 4
-    t.string   "Name",       limit: 255
+    t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20160905033627) do
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "countries", force: :cascade do |t|
-    t.string   "Name",       limit: 255
+    t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
@@ -121,11 +121,11 @@ ActiveRecord::Schema.define(version: 20160905033627) do
     t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
-    t.string   "Name",                   limit: 255
-    t.string   "LastName",               limit: 255
-    t.string   "Age",                    limit: 255
+    t.string   "name",                   limit: 255
+    t.string   "lastname",               limit: 255
+    t.string   "age",                    limit: 255
     t.integer  "city_id",                limit: 4
-    t.string   "Adress",                 limit: 255
+    t.string   "adress",                 limit: 255
     t.string   "description",            limit: 255
     t.integer  "vehicle_id",             limit: 4
   end
@@ -136,8 +136,8 @@ ActiveRecord::Schema.define(version: 20160905033627) do
   add_index "users", ["vehicle_id"], name: "index_users_on_vehicle_id", using: :btree
 
   create_table "vehicles", force: :cascade do |t|
-    t.string   "Name",        limit: 255
-    t.string   "Description", limit: 255
+    t.string   "name",        limit: 255
+    t.string   "description", limit: 255
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end

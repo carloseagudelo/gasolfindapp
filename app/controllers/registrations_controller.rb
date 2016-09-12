@@ -4,7 +4,7 @@ class RegistrationsController  < ApplicationController
   respond_to :json
 
   def create
-    user = User.new(email: params[:email], password: params[:password])
+    user = User.new(email: params[:email], password: params[:password], name: params[:name], lastname: params[:lastname], age: params[:age], city_id: params[:city_id], adress: params[:adress], description: params[:description], vehicle_id: params[:vehicle_id])
     if user.save
       render json: payload(user)
     else

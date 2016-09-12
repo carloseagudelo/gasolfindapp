@@ -4,7 +4,7 @@ class VehiclesController < ApplicationController
   respond_to :json
 
   def create
-  	vehicle = Vehicle.new(Name: params[:Name], Description: params[:Description])
+  	vehicle = Vehicle.new(name: params[:name], description: params[:description])
   	if !vehicle.nil?
   	  if vehicle.save
   	  	render json: {'save' => 'sucefull'}, :status=>201
@@ -30,7 +30,7 @@ class VehiclesController < ApplicationController
   end
 
   def update
-    if Vehicle.update(params[:id], :Name => params[:Name], :Description => params[:Description])
+    if Vehicle.update(params[:id], :name => params[:name], :description => params[:description])
       render json: {'update' => 'sucefull'}, :status=>201
     else
       render json: vehicle.errors, :status=>422
