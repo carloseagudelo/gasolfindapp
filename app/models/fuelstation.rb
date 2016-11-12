@@ -10,8 +10,9 @@ class Fuelstation < ActiveRecord::Base
 
   belongs_to :user
   has_many :comments
-  has_many :services_fuel_station
-  has_many :photo_fuel_station
+  has_and_belongs_to_many :fueltypes
+  has_and_belongs_to_many :services
+  has_and_belongs_to_many :photos
 
   def self.searchId(id)
     'select * from fuelstation where id = {id}'

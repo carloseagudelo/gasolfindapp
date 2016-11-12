@@ -4,6 +4,6 @@ class Service < ActiveRecord::Base
   validates :description, presence: true
   validates :responsabe, presence: true
 
-  has_many :services_fuel_station
+  has_and_belongs_to_many :fuelstations
 
 end
