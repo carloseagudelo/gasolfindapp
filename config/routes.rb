@@ -20,5 +20,7 @@ Rails.application.routes.draw do
   post 'fuelstation_show' => 'fuelstations#show'
   put 'fuelstation_update' => 'fuelstations#update'
   delete 'fuelstation_delete' => 'fuelstations#delete'
+  post 'fuelstation_showFuelStation' => 'fuelstations#showFuelStation'
+  post 'fuelstation_listNearbyFuelStation' => 'fuelstations#listNearbyFuelStation'
 
 end

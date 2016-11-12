@@ -13,4 +13,12 @@ class Fuelstation < ActiveRecord::Base
   has_many :services_fuel_station
   has_many :photo_fuel_station
 
+  def self.searchId(id)
+    'select * from fuelstation where id = {id}'
+  end
+
+  def self.searchPosition(latitude, longitude)
+    
+  end
+
 end

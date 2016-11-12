@@ -45,4 +45,12 @@ class FuelstationsController < ApplicationController
   	end
   end
 
+  def listNearbyFuelStation
+    render json: Fuelstation.searchId(params[:id])
+  end
+
+  def showFuelStation
+    render json: Fuelstation.searchPosition(params[:latitude], params[:longitude])
+  end
+
 end
