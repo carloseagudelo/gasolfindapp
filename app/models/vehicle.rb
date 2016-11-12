@@ -1,3 +1,8 @@
 class Vehicle < ActiveRecord::Base
-	has_many :users
+
+  validates :name, presence: true
+  validates :description, presence: true
+
+  has_many :users
+
 end

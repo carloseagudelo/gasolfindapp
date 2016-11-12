@@ -1,5 +1,8 @@
 class FuelType < ActiveRecord::Base
 
-   has_many :fuels
+  validates :name, presence: true
+  validates :price, presence: true
+
+  has_many :fuels
 
 end
