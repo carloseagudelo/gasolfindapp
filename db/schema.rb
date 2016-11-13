@@ -58,15 +58,15 @@ ActiveRecord::Schema.define(version: 20160905033627) do
 
   add_index "fuelstations", ["user_id"], name: "index_fuelstations_on_user_id", using: :btree
 
-  create_table "fueltype_fuelstation", id: false, force: :cascade do |t|
+  create_table "fueltypefuelstations", id: false, force: :cascade do |t|
     t.integer  "fuelstation_id"
     t.integer  "fueltype_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
 
-  add_index "fueltype_fuelstation", ["fuelstation_id"], name: "index_fueltype_fuelstation_on_fuelstation_id", using: :btree
-  add_index "fueltype_fuelstation", ["fueltype_id"], name: "index_fueltype_fuelstation_on_fueltype_id", using: :btree
+  add_index "fueltypefuelstations", ["fuelstation_id"], name: "index_fueltypefuelstations_on_fuelstation_id", using: :btree
+  add_index "fueltypefuelstations", ["fueltype_id"], name: "index_fueltypefuelstations_on_fueltype_id", using: :btree
 
   create_table "fueltypes", force: :cascade do |t|
     t.string   "name"
@@ -76,15 +76,15 @@ ActiveRecord::Schema.define(version: 20160905033627) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "photo_fuelstations", id: false, force: :cascade do |t|
+  create_table "photofuelstations", id: false, force: :cascade do |t|
     t.integer  "fuelstation_id"
     t.integer  "photo_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
 
-  add_index "photo_fuelstations", ["fuelstation_id"], name: "index_photo_fuelstations_on_fuelstation_id", using: :btree
-  add_index "photo_fuelstations", ["photo_id"], name: "index_photo_fuelstations_on_photo_id", using: :btree
+  add_index "photofuelstations", ["fuelstation_id"], name: "index_photofuelstations_on_fuelstation_id", using: :btree
+  add_index "photofuelstations", ["photo_id"], name: "index_photofuelstations_on_photo_id", using: :btree
 
   create_table "photos", force: :cascade do |t|
     t.string   "name"
@@ -93,6 +93,16 @@ ActiveRecord::Schema.define(version: 20160905033627) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "servicefuelstations", id: false, force: :cascade do |t|
+    t.integer  "fuelstation_id"
+    t.integer  "service_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "servicefuelstations", ["fuelstation_id"], name: "index_servicefuelstations_on_fuelstation_id", using: :btree
+  add_index "servicefuelstations", ["service_id"], name: "index_servicefuelstations_on_service_id", using: :btree
+
   create_table "services", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
@@ -100,16 +110,6 @@ ActiveRecord::Schema.define(version: 20160905033627) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
-
-  create_table "services_fuelstations", id: false, force: :cascade do |t|
-    t.integer  "fuelstation_id"
-    t.integer  "service_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
-  add_index "services_fuelstations", ["fuelstation_id"], name: "index_services_fuelstations_on_fuelstation_id", using: :btree
-  add_index "services_fuelstations", ["service_id"], name: "index_services_fuelstations_on_service_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -149,12 +149,12 @@ ActiveRecord::Schema.define(version: 20160905033627) do
   add_foreign_key "comments", "fuelstations"
   add_foreign_key "comments", "users"
   add_foreign_key "fuelstations", "users"
-  add_foreign_key "fueltype_fuelstation", "fuelstations"
-  add_foreign_key "fueltype_fuelstation", "fueltypes"
-  add_foreign_key "photo_fuelstations", "fuelstations"
-  add_foreign_key "photo_fuelstations", "photos"
-  add_foreign_key "services_fuelstations", "fuelstations"
-  add_foreign_key "services_fuelstations", "services"
+  add_foreign_key "fueltypefuelstations", "fuelstations"
+  add_foreign_key "fueltypefuelstations", "fueltypes"
+  add_foreign_key "photofuelstations", "fuelstations"
+  add_foreign_key "photofuelstations", "photos"
+  add_foreign_key "servicefuelstations", "fuelstations"
+  add_foreign_key "servicefuelstations", "services"
   add_foreign_key "users", "cities"
   add_foreign_key "users", "vehicles"
 end

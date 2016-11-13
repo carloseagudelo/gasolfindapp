@@ -23,4 +23,13 @@ Rails.application.routes.draw do
   post 'fuelstation_showFuelStation' => 'fuelstations#showFuelStation'
   post 'fuelstation_listNearbyFuelStation' => 'fuelstations#listNearbyFuelStation'
 
+  #Services
+  post 'services_create' => 'services#create'
+
+  #Photos
+  post 'photos_create' => 'photos#create'
+
+  #FuelType
+  post 'fueltypes_create' => 'fueltypes#create'
+
 end

@@ -10,12 +10,12 @@ class Fuelstation < ActiveRecord::Base
 
   belongs_to :user
   has_many :comments
-  has_and_belongs_to_many :fueltypes
-  has_and_belongs_to_many :services
-  has_and_belongs_to_many :photos
+  has_and_belongs_to_many :fueltypefuelstations
+  has_and_belongs_to_many :servicefuelstations
+  has_and_belongs_to_many :photofuelstations
 
   def self.searchId(id)
-    'select * from fuelstation where id = {id}'
+    
   end
 
   def self.searchPosition(latitude, longitude)

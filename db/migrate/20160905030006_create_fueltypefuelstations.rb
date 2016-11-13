@@ -1,6 +1,6 @@
-class CreateFueltypeFuelstation < ActiveRecord::Migration
+class CreateFueltypefuelstations < ActiveRecord::Migration
   def change
-    create_table :fueltype_fuelstation, :id => false do |t|
+    create_table :fueltypefuelstations, :id => false do |t|
 
       t.references :fuelstation, index: true, foreign_key: true
       t.references :fueltype, index: true, foreign_key: true      
