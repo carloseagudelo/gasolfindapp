@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
-  #devise_for :users
-  # Authentitication
+
+  #User
   post 'auth_user' => 'authentication#authenticate_user'
   post 'create' => 'registrations#create'
-
-  #Comments
-  get 'comments' => 'comments#index'
 
   #Vehicle
   get 'vehicle_index' => 'vehicles#index'
@@ -20,7 +17,6 @@ Rails.application.routes.draw do
   post 'fuelstation_show' => 'fuelstations#show'
   put 'fuelstation_update' => 'fuelstations#update'
   delete 'fuelstation_delete' => 'fuelstations#delete'
-  post 'fuelstation_showFuelStation' => 'fuelstations#showFuelStation'
   post 'fuelstation_listNearbyFuelStation' => 'fuelstations#listNearbyFuelStation'
 
   #Services
@@ -34,5 +30,12 @@ Rails.application.routes.draw do
   #FuelType
   post 'fueltypes_create' => 'fueltypes#create'
   post 'fueltype_list' => 'fueltypes#showFueltypesPerFuelStation'
+
+  #Comments
+  get 'comments_create' => 'comments#create'
+  get 'comments_update' => 'comments#update'
+  delete 'comments_delete' => 'comments#delete'
+  post 'comments_' => 'comments#listCommentsPerUserAndFuelStation'
+  post 'comments_' => 'comments#listCommentsPerFuelStation'
 
 end

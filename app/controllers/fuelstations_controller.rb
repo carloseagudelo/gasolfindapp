@@ -46,11 +46,12 @@ class FuelstationsController < ApplicationController
   end
 
   def listNearbyFuelStation
-    render json: Fuelstation.searchId(params[:id])
+    if !params[:latitude].nil? and !params[:longitude].nil?
+      render json: Fuelstation.searchPosition(params[:latitude], params[:longitude])
+    else
+      render json: 'Latitude an Longitude can be null', :status=>422
+    end     
   end
 
-  def showFuelStation
-    render json: Fuelstation.searchPosition(params[:latitude], params[:longitude])
-  end
 
 end

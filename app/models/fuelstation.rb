@@ -21,7 +21,7 @@ class Fuelstation < ActiveRecord::Base
   end
 
   def self.searchPosition(latitude, longitude)
-    
+    Fuelstation.find_by_sql("")
   end
 
 end
