@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   get 'comments_create' => 'comments#create'
   get 'comments_update' => 'comments#update'
   delete 'comments_delete' => 'comments#delete'
-  post 'comments_' => 'comments#listCommentsPerUserAndFuelStation'
-  post 'comments_' => 'comments#listCommentsPerFuelStation'
+  post 'comments_listCommentsPerUserAndFuelStation' => 'comments#listCommentsPerUserAndFuelStation'
+  post 'comments_listCommentsPerFuelStation' => 'comments#listCommentsPerFuelStation'
 
 end
