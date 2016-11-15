@@ -17,7 +17,7 @@ class FuelstationsController < ApplicationController
   end
 
   def index
-  	respond_with Fuelstation.all
+  	respond_with Fuelstation.getInfoFuelstations
   end
 
   def show

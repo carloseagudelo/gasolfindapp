@@ -18,4 +18,12 @@ class PhotosController < ApplicationController
   	end
   end
 
+  def showPhotosPerFuelStation
+    if(!params[:fuelstation_id].nil?)
+      render json: Photo.joins("INNER JOIN photofuelstations on photofuelstations.photo_id = photos.id").where("photofuelstations.fuelstation_id = ?", params[:fuelstation_id])
+    else
+      render :json => 'FullStationId is null', :status=>422  
+    end
+  end
+
 end

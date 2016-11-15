@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
 
   before_filter :authenticate_request!
+  respond_to :json
 
   def create
   	cooment = Comment.new(user_id: params[:user_id], fuelstation_id: params[:fuelstation_id], comenmet: params[:comenmet], point: params[:point])
@@ -29,6 +30,22 @@ class CommentsController < ApplicationController
   	else
   		render json: Vehicle.errors, :status=>422
   	end
+  end
+
+  def listCommentsPerUserAndFuelStation
+    if !params[:user_id].nil? and !params[:fuelstation_id].nil?
+      respond_with Comment.where(user_id: params[:user_id], fuelstation_id: params[:fuelstation_id])
+    else
+      render json: 'UserId and FuelstationId can be null', :status=>422
+    end
+  end
+
+  def listCommentsPerFuelStation
+    if !params[:fuelstation_id].nil?
+      respond_with Comment.where(fuelstation_id: params[:fuelstation_id])
+    else
+      render json: 'FuelstationId can be null', :status=>422
+    end
   end
 
 end

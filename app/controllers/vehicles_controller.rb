@@ -37,7 +37,6 @@ class VehiclesController < ApplicationController
     end
   end
 
-
   def delete
   	if Vehicle.delete(params[:id])
   	  render json:  {'delete' => 'sucefull'}, :status=>201

@@ -52,13 +52,14 @@ ActiveRecord::Schema.define(version: 20160905033627) do
     t.string   "adress"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "image_url"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
   add_index "fuelstations", ["user_id"], name: "index_fuelstations_on_user_id", using: :btree
 
-  create_table "fueltypefuelstations", id: false, force: :cascade do |t|
+  create_table "fueltypefuelstations", force: :cascade do |t|
     t.integer  "fuelstation_id"
     t.integer  "fueltype_id"
     t.datetime "created_at",     null: false
@@ -76,7 +77,7 @@ ActiveRecord::Schema.define(version: 20160905033627) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "photofuelstations", id: false, force: :cascade do |t|
+  create_table "photofuelstations", force: :cascade do |t|
     t.integer  "fuelstation_id"
     t.integer  "photo_id"
     t.datetime "created_at",     null: false
@@ -93,7 +94,7 @@ ActiveRecord::Schema.define(version: 20160905033627) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "servicefuelstations", id: false, force: :cascade do |t|
+  create_table "servicefuelstations", force: :cascade do |t|
     t.integer  "fuelstation_id"
     t.integer  "service_id"
     t.datetime "created_at",     null: false

@@ -14,8 +14,10 @@ class Fuelstation < ActiveRecord::Base
   has_and_belongs_to_many :servicefuelstations
   has_and_belongs_to_many :photofuelstations
 
-  def self.searchId(id)
-    
+  def self.getInfoFuelstations
+    Fuelstation.find_by_sql("SELECT fst.id AS id, fst.name AS name, fst.description AS description, fst.image_url AS image_url,
+                                          COALESCE((select sum(point)/count(id) from comments where fuelstation_id = fst.id ),0) AS calification 
+                                          FROM fuelstations AS fst;")
   end
 
   def self.searchPosition(latitude, longitude)
