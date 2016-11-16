@@ -21,15 +21,15 @@ Rails.application.routes.draw do
 
   #Services
   post 'services_create' => 'services#create'
-  get 'services_list' => 'services#showServicesPerFuelStation'
+  post 'services_list' => 'services#showServicesPerFuelStation'
 
   #Photos
   post 'photos_create' => 'photos#create'
-  get 'photo_list' => 'photos#showPhotosPerFuelStation'
+  post 'photo_list' => 'photos#showPhotosPerFuelStation'
 
   #FuelType
   post 'fueltypes_create' => 'fueltypes#create'
-  get 'fueltype_list' => 'fueltypes#showFueltypesPerFuelStation'
+  post 'fueltype_list' => 'fueltypes#showFueltypesPerFuelStation'
 
   #Comments
   post 'comments_create' => 'comments#create'
