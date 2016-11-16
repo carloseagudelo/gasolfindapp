@@ -34,7 +34,7 @@ class CommentsController < ApplicationController
 
   def listCommentsPerUserAndFuelStation
     if !params[:user_id].nil? and !params[:fuelstation_id].nil?
-      respond_with Comment.where(user_id: params[:user_id], fuelstation_id: params[:fuelstation_id])
+      render json: Comment.where(user_id: params[:user_id], fuelstation_id: params[:fuelstation_id])
     else
       render json: 'UserId and FuelstationId can be null', :status=>422
     end
@@ -42,7 +42,7 @@ class CommentsController < ApplicationController
 
   def listCommentsPerFuelStation
     if !params[:fuelstation_id].nil?
-      respond_with Comment.where(fuelstation_id: params[:fuelstation_id])
+      render json: Comment.where(fuelstation_id: params[:fuelstation_id])
     else
       render json: 'FuelstationId can be null', :status=>422
     end
