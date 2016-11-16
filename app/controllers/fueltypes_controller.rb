@@ -6,7 +6,7 @@ class FueltypesController < ApplicationController
   		if fueltype.save
   			fueltypefuelstation = Fueltypefuelstation.new(fuelstation_id: params[:fuelstation_id], fueltype_id: fueltype.id)
         if fueltypefuelstation.save
-          render json: {'save' => 'sucefull'}, :status=>20
+          render json: {'save' => 'sucefull'}, :status=>201
         else
           render :json => fueltypefuelstation.errors, :status=>422
         end

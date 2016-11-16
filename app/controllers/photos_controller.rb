@@ -6,7 +6,7 @@ class PhotosController < ApplicationController
   		if photo.save
   			photofuelstation = Photofuelstation.new(fuelstation_id: params[:fuelstation_id], photo_id: photo.id)
         if photofuelstation.save
-          render json: {'save' => 'sucefull'}, :status=>20
+          render json: {'save' => 'sucefull'}, :status=>201
         else
           render :json => photofuelstation.errors, :status=>422
         end
