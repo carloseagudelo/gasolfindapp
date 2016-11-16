@@ -9,7 +9,7 @@ class ServicesController < ApplicationController
   		if service.save
   			servicefuelstation = Servicefuelstation.new(fuelstation_id: params[:fuelstation_id], service_id: service.id)
         if servicefuelstation.save
-          render json: {'save' => 'sucefull'}, :status=>20
+          render json: {'save' => 'sucefull'}, :status=>201
         else
           render :json => servicefuelstation.errors, :status=>422
         end
