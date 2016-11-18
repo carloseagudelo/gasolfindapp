@@ -25,7 +25,8 @@ class Fuelstation < ActiveRecord::Base
   def self.getInfoFuelstations
     Fuelstation.find_by_sql("SELECT fst.id AS id, fst.name AS name, fst.description AS description, fst.image_url AS image_url,
                             COALESCE((select sum(point)/count(id) 
-                            from comments where fuelstation_id = fst.id ),0) AS calification 
+                            from comments where fuelstation_id = fst.id ),0) AS calification,
+                            fst.latitude AS latitude, fst.longitude AS longitude
                             FROM fuelstations AS fst;")
   end
 
@@ -33,10 +34,11 @@ class Fuelstation < ActiveRecord::Base
   # con punto de referencia en la cordeada latitude/longitude ordenadas desendentemete por distancia, donde solo se mostraran las primeras 10
   # Para esta implementacion se usa la formula de Haversine la cual usa una figura geometrica (Esfera) con radio especificado en el HAVING (Kilometros)
   def self.searchPosition(latitude, longitude)
-    Fuelstation.find_by_sql(["SELECT tb.id, tb.name, tb.description, tb.image_url, tb.calification FROM (
+    Fuelstation.find_by_sql(["SELECT tb.id, tb.name, tb.description, tb.image_url, tb.calification, tb.latitude, tb.longitude FROM (
                                 SELECT fst.id AS id, fst.name AS name, fst.description AS description, fst.image_url AS image_url,
                                   COALESCE((select sum(point)/count(id) from comments where fuelstation_id = fst.id ),0) AS calification,
-                                  (6371 * acos(cos(radians(:lat)) * cos(radians(fst.latitude)) * cos(radians(fst.longitude) - radians(:long)) + sin(radians(:lat)) * sin(radians(fst.latitude )))) AS distance 
+                                  (6371 * acos(cos(radians(:lat)) * cos(radians(fst.latitude)) * cos(radians(fst.longitude) - radians(:long)) + sin(radians(:lat)) * sin(radians(fst.latitude )))) AS distance,
+                                  fst.latitude AS latitude, fst.longitude AS longitude
                                 FROM fuelstations AS fst 
                               )tb
                              GROUP BY tb.id, tb.name, tb.description, tb.image_url, tb.calification, tb.distance
